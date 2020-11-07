@@ -7,6 +7,9 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+//Import Controllers
+const BooksController = require("./controllers/booksController");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -30,6 +33,9 @@ connection.on("connected", () => {
 connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
+
+//Use controllers
+app.use(BooksController);
 
 app.get("/api/config", (req, res) => {
   res.json({
