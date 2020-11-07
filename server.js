@@ -17,6 +17,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/my-mern", {
   useFindAndModify: false,
 });
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 const connection = mongoose.connection;
 
 connection.on("connected", () => {
