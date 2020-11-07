@@ -13,7 +13,7 @@ const BooksController = require("./controllers/booksController");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/my-mern", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
