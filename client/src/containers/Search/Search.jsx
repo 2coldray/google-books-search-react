@@ -6,8 +6,6 @@ const Search = () => {
   const [bookSearch, setBookSearch] = useState("");
   const [bookResults, setBookResults] = useState([]);
 
-  //   useEffect()
-
   const handleInputChange = (e) => {
     const { value } = e.target;
     setBookSearch(value);
