@@ -23,7 +23,7 @@ const SavedSearch = (props) => {
           <h3>By: {props.authors}</h3>
           <p>{props.description}</p>
           <img src={props.image} />
-          <button type="submit"  id="id" className="btn btn-danger mr-2" onClick={deleteBook}>Delete Book</button>
+          <button type="submit"  id={props.id} className="btn btn-danger mr-2" onClick={deleteBook}>Delete Book</button>
           <button type="submit" className="btn btn-secondary" onClick={viewBook}>View Book</button>
         </li>
       </div>
