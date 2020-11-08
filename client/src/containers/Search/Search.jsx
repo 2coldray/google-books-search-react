@@ -52,22 +52,24 @@ const Search = () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            {bookResults === undefined || bookResults.length === 0
-              ? "No books with that title"
-              : bookResults.map((res) => (
-                  <Result
-                    key={res.selfLink}
-                    title={res.volumeInfo.title}
-                    authors={res.volumeInfo.authors}
-                    description={res.volumeInfo.description}
-                    link={res.volumeInfo.infoLink}
-                    image={
-                      res.volumeInfo.imageLinks === undefined
-                        ? ""
-                        : res.volumeInfo.imageLinks.thumbnail
-                    }
-                  />
-                ))}
+            <ul className="list-group">
+              {bookResults === undefined || bookResults.length === 0
+                ? "No books with that title"
+                : bookResults.map((res) => (
+                    <BookSearch
+                      key={res.selfLink}
+                      title={res.volumeInfo.title}
+                      authors={res.volumeInfo.authors}
+                      description={res.volumeInfo.description}
+                      link={res.volumeInfo.infoLink}
+                      image={
+                        res.volumeInfo.imageLinks === undefined
+                          ? ""
+                          : res.volumeInfo.imageLinks.thumbnail
+                      }
+                    />
+                  ))}
+            </ul>
           </div>
         </div>
       </div>

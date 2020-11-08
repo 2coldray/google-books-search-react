@@ -12,11 +12,11 @@ const BookSearch = (props) => {
 
   return (
     <div className="container text-center">
-      <li>
+      <li className="list-group-item">
         <h2>{props.title}</h2>
         <h2>{props.authors}</h2>
         <h2>{props.description}</h2>
-        <img src={props.image} alt="image" />
+        <img src={props.image} />
         <h2>{props.link}</h2>
       </li>
     </div>
