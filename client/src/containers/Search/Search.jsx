@@ -54,7 +54,7 @@ const Search = () => {
           <div className="col-sm-12">
             <ul className="list-group">
               {bookResults === undefined || bookResults.length === 0
-                ? "No books with that title"
+                ? "No books with that title, Please search another a book above"
                 : bookResults.map((res) => (
                     <BookSearch
                       key={res.selfLink}

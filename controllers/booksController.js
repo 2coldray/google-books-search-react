@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../models/Books");
+const Books = require("../models/Books");
 
 //TODO: Get route
 router.get("/api/books", (req, res) => {
-  db.Books.find({})
+  Books.find({})
     .then((foundBooks) => {
       res.json(foundBooks);
     })
@@ -20,7 +20,13 @@ router.get("/api/books", (req, res) => {
 
 //TODO: Post route
 router.post("/api/books", (req, res) => {
-  db.Books.create(req.body)
+  Books.create({
+    title: req.body.title,
+    authors: req.body.authors,
+    description: req.body.description,
+    image: req.body.image,
+    link: req.body.link
+  })
     .then((saveBooks) => {
       res.json(saveBooks);
     })
@@ -36,7 +42,7 @@ router.post("/api/books", (req, res) => {
 
 //TODO: Delete route
 router.delete("/api/books/:id", (req, res) => {
-  db.Books.findByIdAndDelete(req.params.id)
+  Books.findByIdAndDelete(req.params.id)
     .then((deleteBook) => {
       res.json(deleteBook);
     })
