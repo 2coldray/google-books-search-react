@@ -1,33 +1,40 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
 
-const SavedSearch = (props) => {
+const SavedSearch = ({ book, loadAllBooks }) => {
+  const viewBook = () => {
+    let path = book.link;
+    console.log(path);
+    window.open(path);
+  };
 
-    const viewBook = () => {
-        let path = props.link;
-        window.open(path);
-      };
+  const deleteBook = (id) => {
+    axios.delete(`/api/books/${id}`).then((res) => {
+      console.log(res);
+      loadAllBooks();
+    });
+  };
 
-    const deleteBook = (e) => {
-        const id = e.target.getAttribute("id");
-        axios.delete(`/api/books/${id}`).then((res) => {
-            console.log(res)
-            props.loadAllBooks()
-        })
-    }
-
-    return (
-        <div className="container text-center">
-        <li className="list-group-item">
-          <h2>{props.title}</h2>
-          <h3>By: {props.authors}</h3>
-          <p>{props.description}</p>
-          <img src={props.image} />
-          <button type="submit"  id={props.id} className="btn btn-danger mr-2" onClick={deleteBook}>Delete Book</button>
-          <button type="submit" className="btn btn-secondary" onClick={viewBook}>View Book</button>
-        </li>
-      </div>
-    );
+  return (
+    <div className="container text-center">
+      <li className="list-group-item">
+        <h2>{book.title}</h2>
+        <h3>By: {book.authors}</h3>
+        <p>{book.description}</p>
+        <img src={book.image} />
+        <button
+          type="submit"
+          className="btn btn-danger mr-2"
+          onClick={() => deleteBook(book._id)}
+        >
+          Delete Book
+        </button>
+        <button type="submit" className="btn btn-secondary" onClick={viewBook}>
+          View Book
+        </button>
+      </li>
+    </div>
+  );
 };
 
 export default SavedSearch;

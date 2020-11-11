@@ -5,7 +5,6 @@ import SavedSearch from "../../components/SavedSearch/SavedSearch";
 //This save page doesn't work yet. Page should load and you're supposed to be able to view and delete your saved books
 
 const Saved = () => {
-
   const [getBooks, setGetBooks] = useState([]);
 
   useEffect(() => {
@@ -21,19 +20,12 @@ const Saved = () => {
   return (
     <div className="container">
       <ul className="list-group">
-        {getBooks.map((book) => (
-          <SavedSearch 
-          title={book.title}
-          authors={book.authors}
-          description={book.description}
-          image={book.image}
-          id={book._id}
-          loadAllBooks={loadAllBooks}
-          />
+        {getBooks.map((book, i) => (
+          <SavedSearch key={i+ '-book'} book={book} loadAllBooks={loadAllBooks} />
         ))}
       </ul>
     </div>
-  )
+  );
 };
 
 export default Saved;
