@@ -21,7 +21,13 @@ const Saved = () => {
     <div className="container">
       <ul className="list-group">
         {getBooks.map((book, i) => (
-          <SavedSearch key={i+ '-book'} book={book} loadAllBooks={loadAllBooks} />
+          // function SavedSearch(props)
+          // SavedSearch({ book: book, loadAll: loadAll }) 
+          <SavedSearch
+            key={i + "-book"}
+            book={book}
+            loadAllBooks={loadAllBooks}
+          />
         ))}
       </ul>
     </div>
